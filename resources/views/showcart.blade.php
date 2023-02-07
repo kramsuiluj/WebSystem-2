@@ -211,13 +211,13 @@
         </div>
         </form>
 
-        @if($countpending != null)
-            @if($data->refno == null)
+        {{--@if($countpending != null)--}}
+            {{--@if($data->refno == null)--}}
             <div id="manageDiv" class="col-lg-12"align="center" >
-                <input type="submit" class="btn btn-primary" style="margin-top:5px; font-weight:bold; border:1px solid-black;" id="manage" value="MANAGE" >    
+                <input type="submit" class="btn btn-primary" style="margin-top:5px; font-weight:bold; border:1px solid black;" id="manage" value="MANAGE">
             </div>
-            @endif
-        @endif
+            {{--@endif--}}
+        {{--@endif--}}
 
 
         <!-- approved -->

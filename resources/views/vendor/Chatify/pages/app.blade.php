@@ -5,7 +5,7 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -18,6 +18,8 @@
             <div class="messenger-listView-tabs">
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
+                <a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">
+                    <span class="fas fa-users"></span> Groups</a>
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -37,7 +39,17 @@
 
                {{-- Contact --}}
                <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);position: relative;"></div>
+
            </div>
+
+           {{-- ---------------- [ Group Tab ] ---------------- --}}
+           <div class="@if($type == 'group') show @endif messenger-tab groups-tab app-scroll" data-view="groups">
+                {{-- items --}}
+                <p style="text-align: center;color:grey;margin-top:30px">
+                    <a target="_blank" style="color:{{$messengerColor}};" href="https://chatify.munafio.com/notes#groups-feature">Click here</a> for more info!
+                </p>
+             </div>
+
              {{-- ---------------- [ Search Tab ] ---------------- --}}
            <div class="messenger-tab search-tab app-scroll" data-view="search">
                 {{-- items --}}
@@ -69,14 +81,15 @@
                 </nav>
             </nav>
         </div>
-        {{-- Internet connection --}}
-        <div class="internet-connection">
-            <span class="ic-connected">Connected</span>
-            <span class="ic-connecting">Connecting...</span>
-            <span class="ic-noInternet">No internet access</span>
-        </div>
+
         {{-- Messaging area --}}
         <div class="m-body messages-container app-scroll">
+             {{-- Internet connection --}}
+            <div class="internet-connection">
+                <span class="ic-connected">Connected</span>
+                <span class="ic-connecting">Connecting...</span>
+                <span class="ic-noInternet">No internet access</span>
+            </div>
             <div class="messages">
                 <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
             </div>
@@ -92,9 +105,10 @@
                     </p>
                 </div>
             </div>
-            {{-- Send Message Form --}}
-            @include('Chatify::layouts.sendForm')
+
         </div>
+        {{-- Send Message Form --}}
+        @include('Chatify::layouts.sendForm')
     </div>
     {{-- ---------------------- Info side ---------------------- --}}
     <div class="messenger-infoView app-scroll">
