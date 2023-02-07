@@ -117,8 +117,12 @@ class AdminController extends Controller
             }
             $update_prod = kilos::where('prod_name', $prod_reserved[$value])
                 ->where('kg', $kg[$value])->first();
-            $update_prod->warehouse_quantity -= $quantities[$value];
-            $update_prod->save();
+		if ($update_prod != null){
+			$update_prod->warehouse_quantity -= $quantities[$value];
+			$update_prod->save();
+		}
+            //$update_prod->warehouse_quantity -= $quantities[$value];
+            //$update_prod->save();
         }
 
         $get_kilos  = kilos::select(kilos::raw("group_concat(warehouse_quantity SEPARATOR '.') as warehouse_quantity,

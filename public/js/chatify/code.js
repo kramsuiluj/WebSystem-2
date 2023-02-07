@@ -384,8 +384,8 @@ function IDinfo(id, type) {
         // focus on messaging input
         messageInput.focus();
         // update info in view
-        $(".messenger-infoView .info-name").html(data.fetch.name);
-        $(".m-header-messaging .user-name").html(data.fetch.name);
+        $(".messenger-infoView .info-name").text(data.fetch.name);
+        $(".m-header-messaging .user-name").text(data.fetch.name);
         // Star status
         data.favorite > 0
           ? $(".add-to-favorite").addClass("favorite")
@@ -746,7 +746,7 @@ function sendContactItemUpdates(status) {
  *-------------------------------------------------------------
  */
 function sendMessageDeleteEvent(messageId) {
-  return clientChannel.trigger("client-messageDelete", {
+  return clientSendChannel.trigger("client-messageDelete", {
     id: messageId,
   });
 }
@@ -1566,3 +1566,22 @@ observer.observe(document, config);
 
 // stop listening to changes
 // observer.disconnect();
+
+/**
+ *-------------------------------------------------------------
+ * Resize messaging area when resize the viewport.
+ * on mobile devices when the keyboard is shown, the viewport
+ * height is changed, so we need to resize the messaging area
+ * to fit the new height.
+ *-------------------------------------------------------------
+ */
+var resizeTimeout;
+window.visualViewport.addEventListener("resize", (e) => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(function () {
+    const h = e.target.height;
+    if (h) {
+      $(".messenger-messagingView").css({ height: h + "px" });
+    }
+  }, 100);
+});
