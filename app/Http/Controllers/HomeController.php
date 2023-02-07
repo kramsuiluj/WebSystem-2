@@ -94,7 +94,7 @@ class HomeController extends Controller
                 foreach ($product as $product) {
                     $explode_store = explode('.', $product->store_quantity);
                     for ($i = 0; $i < count($explode_store); $i++) {
-                        $total_product += $explode_store[$i];
+                        $total_product += ((int)$explode_store[$i]);
                     }
 
                 }
@@ -102,7 +102,7 @@ class HomeController extends Controller
                 foreach ($products as $products) {
                     $explode_ware = explode('.', $products->warehouse_quantity);
                     for ($i = 0; $i < count($explode_ware); $i++) {
-                        $total_products += $explode_ware[$i];
+                        $total_products += ((int)$explode_ware[$i]);
                     }
                 }
                 $total_sales = 0;
