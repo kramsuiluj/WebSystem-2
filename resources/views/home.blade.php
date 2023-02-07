@@ -141,7 +141,7 @@
                           <div class="item">
                             <div class="img-fill">
 
-                                <img src="{{ url('assets/images/farm1.jpg') }}" alt="">
+                                <img src="{{ url('assets/images/FARM1.jpg') }}" alt="">
                             </div>
                           </div>
                           <!-- // Item -->

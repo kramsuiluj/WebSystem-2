@@ -653,7 +653,7 @@ class HomeController extends Controller
                 $calculate->reserved_qty = $qty[$value];
                 $calculate->save();
             } else {
-                $update_prod->save();
+                $calculate->update();
             }
 
         }
